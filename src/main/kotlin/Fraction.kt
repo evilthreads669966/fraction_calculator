@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 import kotlin.math.abs
+import kotlin.properties.Delegates
 
 data class Fraction (var numerator: Int, var denominator: Int): Comparable<Fraction>{
     companion object{
@@ -64,7 +65,11 @@ data class Fraction (var numerator: Int, var denominator: Int): Comparable<Fract
     }
 
     fun divide(fraction: Fraction): Fraction {
-        val result = Fraction(numerator * fraction.denominator, denominator * fraction.numerator)
+        var result: Fraction by Delegates.notNull()
+        if(fraction.numerator < 0)
+            result = Fraction(numerator * -abs(fraction.denominator), denominator * abs(fraction.numerator))
+        else
+            result = Fraction(numerator * fraction.denominator, denominator * fraction.numerator)
         result.reduce()
         return result
     }
