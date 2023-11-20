@@ -54,13 +54,11 @@ data class Fraction (var numerator: Int, var denominator: Int): Comparable<Fract
         numerator = numerator * (lcm / denominator)
         fraction.numerator = fraction.numerator * (lcm / fraction.denominator)
         val result = Fraction(numerator - fraction.numerator, lcm)
-        result.reduce()
         return result
     }
 
     fun multiply(fraction: Fraction): Fraction {
         val result = Fraction(numerator * fraction.numerator, denominator * fraction.denominator)
-        result.reduce()
         return result
     }
 
@@ -70,7 +68,6 @@ data class Fraction (var numerator: Int, var denominator: Int): Comparable<Fract
             result = Fraction(numerator * -abs(fraction.denominator), denominator * abs(fraction.numerator))
         else
             result = Fraction(numerator * fraction.denominator, denominator * fraction.numerator)
-        result.reduce()
         return result
     }
 
