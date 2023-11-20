@@ -18,6 +18,12 @@ import kotlin.math.abs
 import kotlin.properties.Delegates
 
 data class Fraction (var numerator: Int, var denominator: Int): Comparable<Fraction>{
+
+    init {
+        if(denominator < 0)
+            throw NegativeDenominatorException()
+    }
+
     companion object{
         @JvmStatic
         fun sort(fractions: Collection<Fraction>): List<Fraction>{
