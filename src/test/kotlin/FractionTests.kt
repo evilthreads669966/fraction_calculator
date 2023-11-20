@@ -61,4 +61,16 @@ class FractionTests {
         fraction.reduce()
         assertEquals(Fraction(1,5), fraction)
     }
+
+    @Test
+    fun lcmTest(){
+        val lcm = MathUtils.lcm(listOf(2,5,10))
+        assertEquals(10, lcm)
+    }
+
+    @Test
+    fun gcfTest(){
+        val gcf = MathUtils.gcf(sortedSetOf(10, 20, 100))
+        assertEquals(10, gcf.gcf)
+    }
 }
