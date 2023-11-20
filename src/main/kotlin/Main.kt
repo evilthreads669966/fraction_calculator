@@ -20,7 +20,11 @@ fun main(){
         println("Supports + - * /")
 
         val input = readlnOrNull()?.trim()
-        if(input.isNullOrBlank()) continue
+        if(input.isNullOrBlank())
+            continue
+        if(input.lowercase() == "exit")
+            System.exit(0)
+
         var parts = input.split(" ")
         val result = evaluateFractionExpression(parts)
         if(result == null) continue
