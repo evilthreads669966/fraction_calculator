@@ -1,5 +1,3 @@
-import kotlin.properties.Delegates
-
 /*
 Copyright 2023 Chris Basinger
 
@@ -16,13 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-fun main(){
-    while(true){
-        println("Enter for example 1/2 + 2/5")
-        println("Supports + - * /")
-        println("Enter reduce 1/2 for example for reduction")
-        println("Enter 1/2 1/4 for comparison")
+import kotlin.properties.Delegates
 
+fun main(){
+    println("Enter for example 1/2 + 2/5")
+    println("Supports + - * /")
+    println("Enter reduce 1/2 for example for reduction")
+    println("Enter 1/2 1/4 for comparison")
+    while(true){
+        print("Expression: ")
         val input = readlnOrNull()?.trim()
         if(input.isNullOrBlank())
             continue
@@ -69,12 +69,15 @@ fun main(){
             println("The answer is: $leftFraction $comparisonOperator $rightFraction")
             continue
         }
-
-        var parts = input.split(" ")
-        val result = evaluateFractionExpression(parts)
-        if(result == null) continue
-        result.reduce()
-        println("The answer is: $result")
+        if(input.split(" ").size == 3){
+            var parts = input.split(" ")
+            val result = evaluateFractionExpression(parts)
+            if(result == null) continue
+            result.reduce()
+            println("The answer is: $result")
+            continue
+        }
+        println("Invalid input")
     }
 
 }
