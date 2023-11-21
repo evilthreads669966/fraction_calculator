@@ -17,10 +17,7 @@ limitations under the License.
 import kotlin.properties.Delegates
 
 fun main(){
-    println("Enter for example 1/2 + 2/5")
-    println("Supports + - * /")
-    println("Enter reduce 1/2 for example for reduction")
-    println("Enter 1/2 1/4 for comparison")
+    help()
     while(true){
         print("Expression: ")
         val input = readlnOrNull()?.trim()
@@ -28,6 +25,10 @@ fun main(){
             continue
         if(input.lowercase() == "exit")
             System.exit(0)
+        if(input.lowercase() == "help"){
+            help()
+            continue
+        }
         if(input.startsWith("reduce")){
             val parts = input.split(" ")
             val fractionParts = parts[1].split("/")
@@ -80,6 +81,14 @@ fun main(){
         println("Invalid input")
     }
 
+}
+
+fun help(){
+    println("Enter for example 1/2 + 2/5")
+    println("Supports + - * /")
+    println("Enter reduce 1/2 for example for reduction")
+    println("Enter 1/2 1/4 for comparison")
+    println("Enter help for help and exit to exit the app")
 }
 
 fun evaluateFractionExpression(parts: List<String>): Fraction?{
