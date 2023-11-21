@@ -18,12 +18,26 @@ fun main(){
     while(true){
         println("Enter for example 1/2 + 2/5")
         println("Supports + - * /")
+        println("Enter reduce 1/2 for example for reduction")
+        println("Enter 1/2 1/4 for comparison")
 
         val input = readlnOrNull()?.trim()
         if(input.isNullOrBlank())
             continue
         if(input.lowercase() == "exit")
             System.exit(0)
+        if(input.startsWith("reduce")){
+            val parts = input.split(" ")
+            val fractionParts = parts[1].split("/")
+            val numerator = fractionParts[0].toIntOrNull()
+            val denominator = fractionParts[1].toIntOrNull()
+            if(numerator == null) continue
+            if(denominator == null) continue
+            val fraction = Fraction(numerator, denominator)
+            fraction.reduce()
+            println("The reduced fraction is: $fraction")
+            continue
+        }
 
         var parts = input.split(" ")
         val result = evaluateFractionExpression(parts)
