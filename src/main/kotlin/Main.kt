@@ -1,3 +1,5 @@
+import kotlin.properties.Delegates
+
 /*
 Copyright 2023 Chris Basinger
 
@@ -36,6 +38,35 @@ fun main(){
             val fraction = Fraction(numerator, denominator)
             fraction.reduce()
             println("The reduced fraction is: $fraction")
+            continue
+        }
+        if(input.split(" ").size == 2){
+            val parts = input.split(" ")
+
+            val leftFractionParts = parts[0].split("/")
+            val leftNumerator = leftFractionParts[0].toIntOrNull()
+            val leftDenominator = leftFractionParts[1].toIntOrNull()
+            if(leftNumerator == null) continue
+            if(leftDenominator == null) continue
+            val leftFraction = Fraction(leftNumerator, leftDenominator)
+
+            val rightFractionParts = parts[1].split("/")
+            val rightNumerator = rightFractionParts[0].toIntOrNull()
+            val rightDenominator = rightFractionParts[1].toIntOrNull()
+            if(rightNumerator == null) continue
+            if(rightDenominator == null) continue
+            val rightFraction = Fraction(rightNumerator, rightDenominator)
+
+            val comparisonValue = leftFraction.compareTo(rightFraction)
+
+            var comparisonOperator: Char by Delegates.notNull()
+            when(comparisonValue){
+                -1 -> comparisonOperator = '<'
+                0 -> comparisonOperator = '='
+                1 -> comparisonOperator = '>'
+            }
+
+            println("The answer is: $leftFraction $comparisonOperator $rightFraction")
             continue
         }
 

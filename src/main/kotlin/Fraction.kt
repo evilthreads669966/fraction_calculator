@@ -80,11 +80,11 @@ data class Fraction (var numerator: Int, var denominator: Int): Comparable<Fract
 
     override fun compareTo(other: Fraction): Int {
         val lcm = MathUtils.lcm(listOf(denominator, other.denominator))
-        numerator = numerator * (lcm / denominator)
-        other.numerator = other.numerator * (lcm / other.denominator)
-        if(numerator > other.numerator)
+        val num  = numerator * (lcm / denominator)
+        val otherNum = other.numerator * (lcm / other.denominator)
+        if(num > otherNum)
             return 1
-        else if(numerator < other.numerator)
+        else if(num < otherNum)
             return -1
         else
             return 0
