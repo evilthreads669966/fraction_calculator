@@ -17,6 +17,7 @@ limitations under the License.
 import kotlin.test.Test
 import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class FractionTests {
     val fractionA = Fraction(1, 2)
@@ -72,5 +73,11 @@ class FractionTests {
     fun gcfTest(){
         val gcf = MathUtils.gcf(sortedSetOf(10, 20, 100))
         assertEquals(10, gcf.gcf)
+    }
+
+    @Test
+    fun fractionCompareToTest(){
+        val result = fractionA > fractionB
+        assertTrue(result)
     }
 }
