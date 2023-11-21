@@ -1,6 +1,6 @@
 # Fraction Calculator
 
-A fraction calculator that allows you to add, subtract, multiply, and divide fractions.
+A fraction calculator that allows you to add, subtract, multiply, divide, reduce, and compare fractions.
 
 <table>
    <tr>
