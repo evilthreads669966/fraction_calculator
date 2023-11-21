@@ -85,20 +85,14 @@ object MathUtils{
     @JvmStatic
     fun lcm(numbers: List<Int>): Int{
         var lcm: Int = numbers.max()
-        while(true){
-            var isMultiple = false
+        loop@while(true){
             for(number in numbers) {
                 if(lcm % number != 0) {
                     lcm++
-                    continue
-                }else{
-                    if(!isMultiple)
-                        isMultiple = true
+                    continue@loop
                 }
             }
-            if(isMultiple){
-                return lcm
-            }
+            return lcm
         }
     }
 }
