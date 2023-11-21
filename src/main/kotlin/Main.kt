@@ -35,25 +35,32 @@ fun main(){
 }
 
 fun evaluateFractionExpression(parts: List<String>): Fraction?{
-    val leftFractionParts = parts[0].split("/")
-    val leftNumerator = leftFractionParts[0].toIntOrNull()
-    val leftDenominator = leftFractionParts[1].toIntOrNull()
-    if(leftNumerator == null) return null
-    if(leftDenominator == null) return null
-    val leftFraction = Fraction(leftNumerator,leftDenominator)
 
-    val rightFractionParts = parts[2].split("/")
-    val rightNumerator = rightFractionParts[0].toIntOrNull()
-    val rightDenominator = rightFractionParts[1].toIntOrNull()
-    if(rightNumerator == null) return null
-    if(rightDenominator == null) return null
-    val rightFraction = Fraction(rightNumerator, rightDenominator)
+    try{
+        val leftFractionParts = parts[0].split("/")
+        val leftNumerator = leftFractionParts[0].toIntOrNull()
+        val leftDenominator = leftFractionParts[1].toIntOrNull()
+        if(leftNumerator == null) return null
+        if(leftDenominator == null) return null
 
-    when(parts[1]){
-        "+" -> return leftFraction + rightFraction
-        "-" -> return leftFraction - rightFraction
-        "*" -> return leftFraction * rightFraction
-        "/" -> return leftFraction / rightFraction
-        else -> return null
+        val leftFraction = Fraction(leftNumerator,leftDenominator)
+
+        val rightFractionParts = parts[2].split("/")
+        val rightNumerator = rightFractionParts[0].toIntOrNull()
+        val rightDenominator = rightFractionParts[1].toIntOrNull()
+        if(rightNumerator == null) return null
+        if(rightDenominator == null) return null
+        val rightFraction = Fraction(rightNumerator, rightDenominator)
+
+        when(parts[1]){
+            "+" -> return leftFraction + rightFraction
+            "-" -> return leftFraction - rightFraction
+            "*" -> return leftFraction * rightFraction
+            "/" -> return leftFraction / rightFraction
+            else -> return null
+        }
+    }catch (e: NegativeDenominatorException){
+        println("Negative denominators are not allowed")
+        return null
     }
 }
