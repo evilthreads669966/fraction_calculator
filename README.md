@@ -2,6 +2,33 @@
 
 A fraction calculator that allows you to add, subtract, multiply, and divide fractions.
 
+<table>
+   <tr>
+      <th>Command</th>
+      <th>Example</th>
+   </tr>
+   <tr>
+      <td>+</td>
+      <td>1/2 + 1/4</td>
+   </tr>
+   <tr>
+      <td>-</td>
+      <td>1/2 - 1/4</td>
+   </tr>
+      <td>*</td>
+      <td>1/2 * 1/4</td>
+   </tr>
+      <td>/</td>
+      <td>1/2 / 1/4</td>
+   </tr>
+      <td>reduce</td>
+      <td>reduce 4/8</td>
+   </tr>
+      <td>compare</td>      
+      <td>1/2 1/4</td>
+   </tr>
+</table>
+
 ```
 Copyright 2023 Chris Basinger
 
