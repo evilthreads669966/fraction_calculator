@@ -16,6 +16,7 @@ limitations under the License.
 
 import kotlin.properties.Delegates
 
+
 fun main(){
     help()
     while(true){
@@ -94,6 +95,7 @@ fun help(){
 fun evaluateFractionExpression(parts: List<String>): Fraction?{
 
     try{
+        if(!parts[0].contains("/")) return null
         val leftFractionParts = parts[0].split("/")
         val leftNumerator = leftFractionParts[0].toIntOrNull()
         val leftDenominator = leftFractionParts[1].toIntOrNull()
@@ -102,6 +104,7 @@ fun evaluateFractionExpression(parts: List<String>): Fraction?{
 
         val leftFraction = Fraction(leftNumerator,leftDenominator)
 
+        if(!parts[2].contains("/")) return null
         val rightFractionParts = parts[2].split("/")
         val rightNumerator = rightFractionParts[0].toIntOrNull()
         val rightDenominator = rightFractionParts[1].toIntOrNull()
